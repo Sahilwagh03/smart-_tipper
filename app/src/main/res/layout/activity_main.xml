@@ -79,29 +79,34 @@
             android:id="@+id/tip_options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkedButton="@id/option_twenty_percent"
+            android:checkedButton="@id/option_excellent_service"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="@id/service_question"
             app:layout_constraintTop_toBottomOf="@id/service_question">
 
             <RadioButton
-                android:id="@+id/option_twenty_percent"
+                android:id="@+id/option_poor_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/amazing_service" />
+                android:text="Poor (10%)" />
 
             <RadioButton
-                android:id="@+id/option_eighteen_percent"
+                android:id="@+id/option_average_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/good_service" />
+                android:text="Average (15%)" />
 
             <RadioButton
-                android:id="@+id/option_fifteen_percent"
+                android:id="@+id/option_good_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ok_service" />
+                android:text="Good (18%)" />
 
+            <RadioButton
+                android:id="@+id/option_excellent_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Excellent (20%)" />
         </RadioGroup>
 
         <ImageView

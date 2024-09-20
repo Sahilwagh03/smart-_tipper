@@ -69,9 +69,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Get the tip percentage based on which radio button is selected
-        val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
-            R.id.option_twenty_percent -> 0.20
-            R.id.option_eighteen_percent -> 0.18
+       val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
+            R.id.option_poor_service -> 0.10
+            R.id.option_average_service -> 0.15
+            R.id.option_good_service -> 0.18
+            R.id.option_excellent_service -> 0.20
             else -> 0.15
         }
 
