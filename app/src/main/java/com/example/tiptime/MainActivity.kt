@@ -64,12 +64,12 @@ class MainActivity : AppCompatActivity() {
 
         // If the cost is null or 0, then display 0 tip and exit this function early.
         if (cost == null || cost == 0.0) {
-            displayTip(0.0)
+            displayTipAndTotal(0.0, 0.0)
             return
         }
 
-        // Get the tip percentage based on which radio button is selected
-       val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
+        // Get the tip percentage based on service quality selected
+        val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
             R.id.option_poor_service -> 0.10
             R.id.option_average_service -> 0.15
             R.id.option_good_service -> 0.18
@@ -79,27 +79,47 @@ class MainActivity : AppCompatActivity() {
 
         // Calculate the tip
         var tip = tipPercentage * cost
+        var totalBill = cost + tip
 
-        // If the switch for rounding up the tip toggled on (isChecked is true), then round up the
-        // tip. Otherwise do not change the tip value.
-        val roundUp = binding.roundUpSwitch.isChecked
-        if (roundUp) {
-            // Take the ceiling of the current tip, which rounds up to the next integer, and store
-            // the new value in the tip variable.
-            tip = kotlin.math.ceil(tip)
+//        // If the switch for rounding up the tip toggled on (isChecked is true), then round up the
+//        // tip. Otherwise do not change the tip value.
+//        val roundUp = binding.roundUpSwitch.isChecked
+//        if (roundUp) {
+//            // Take the ceiling of the current tip, which rounds up to the next integer, and store
+//            // the new value in the tip variable.
+//            tip = kotlin.math.ceil(tip)
+//        }
+
+        // Handle the two switches: Round Tip and Round Total Bill
+        when {
+            binding.roundUpSwitch.isChecked -> {
+                // Round the tip up if the "Round Tip" switch is enabled
+                tip = kotlin.math.ceil(tip)
+                totalBill = cost + tip
+                binding.roundTotalSwitch.isChecked = false // Uncheck the other switch
+            }
+            binding.roundTotalSwitch.isChecked -> {
+                // Round the total bill to the nearest whole number if the "Round Total Bill" switch is enabled
+                totalBill = kotlin.math.ceil(totalBill)
+                binding.roundUpSwitch.isChecked = false // Uncheck the other switch
+            }
         }
 
         // Display the formatted tip value onscreen
-        displayTip(tip)
+        displayTipAndTotal(tip, totalBill)
     }
 
     /**
      * Format the tip amount according to the local currency and display it onscreen.
      * Example would be "Tip Amount: $10.00".
      */
-    private fun displayTip(tip: Double) {
+    private fun displayTipAndTotal(tip: Double, totalBill: Double) {
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
+        val formattedTotal = NumberFormat.getCurrencyInstance().format(totalBill)
+
+        // Show both tip and total bill
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+        binding.totalResult.text = getString(R.string.total_amount, formattedTotal)
     }
 
     /**

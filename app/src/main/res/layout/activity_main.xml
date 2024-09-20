@@ -109,6 +109,7 @@
                 android:text="Excellent (20%)" />
         </RadioGroup>
 
+
         <ImageView
             android:id="@+id/icon_round_up"
             android:layout_width="wrap_content"
@@ -129,6 +130,16 @@
             app:layout_constraintStart_toStartOf="@id/tip_options"
             app:layout_constraintTop_toBottomOf="@id/tip_options" />
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/round_total_switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/round_total_bill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tip_options"
+            app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
+
+
         <Button
             android:id="@+id/calculate_button"
             android:layout_width="0dp"
@@ -148,5 +159,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calculate_button"
             tools:text="Tip Amount: $10" />
+
+        <TextView
+            android:id="@+id/total_result"
+            style="@style/Widget.TipTime.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tip_result"
+            tools:text="Total Amount: $55" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
