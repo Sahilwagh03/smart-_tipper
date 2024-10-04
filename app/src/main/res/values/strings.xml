@@ -37,9 +37,13 @@
     <!-- Text label for toggle switch that asks the user if they want to round up the tip  -->
     <string name="round_up_tip">Round up tip?</string>
 
+    <string name="round_total_bill">Round Total Bill</string>
+
     <!-- Label for button that calculates the tip  -->
     <string name="calculate">Calculate</string>
 
     <!-- Formatted string for the tip result  -->
     <string name="tip_amount">Tip Amount: %s</string>
+
+    <string name="total_amount">Total Amount: %s</string>
 </resources>
